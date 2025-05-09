@@ -125,6 +125,12 @@ kubectl port-forward deployment/sample-application 9999:8080
 
 You can now access the application at `http://localhost:9999/api/hello`.
 
+## Docker Images
+
+You can pull the pre-built Docker images (amd64 and arm64 os arch) from the following repository:
+
+https://hub.docker.com/repository/docker/andifalk/kubernetes-sample-app
+
 ## Reference Documentation
 
 For further reference, please consider the following sections:
