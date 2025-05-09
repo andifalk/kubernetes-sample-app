@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-application
+  name: sample-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-application
+  template:
+    metadata:
+      labels:
+        app: sample-application
+    spec:
+      securityContext: {}
+      containers:
+      - image: andifalk/kubernetes-sample-app:jib
+        name: sample-application-buildpack
+        imagePullPolicy: Always
+        resources: {}
+        securityContext: {}
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/liveness
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/readiness
+        startupProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              port: 8080
+              path: /actuator/health/readiness
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: cloud
+        volumeMounts:
+          - mountPath: /etc/app/secrets
+            name: app-secrets
+          - mountPath: /etc/app/config
+            name: app-config
+      volumes:
+        - name: app-secrets
+          secret:
+            secretName: "app"
+        - name: app-config
+          configMap:
+            name: "app"

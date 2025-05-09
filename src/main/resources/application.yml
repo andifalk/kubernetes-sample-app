@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: sample-application
+
+management:
+  endpoint:
+    env:
+      show-values: always
+      access: read_only
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  error:
+    include-stacktrace: never
+  port: 8080
+
+app:
+  myconfig: default-config
+  mysecret: default-secret

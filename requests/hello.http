@@ -1,0 +1,19 @@
+### GET request to example api endpoint
+GET {{url}}/api/hello
+
+### GET request to example api endpoint
+GET {{url}}/api/config
+
+### GET request to health endpoint
+GET {{url}}/actuator/health
+
+### GET request to readiness endpoint
+GET {{url}}/actuator/health/readiness
+
+### GET request to liveness endpoint
+GET {{url}}/actuator/health/liveness
+
+### GET request to liveness endpoint
+GET {{url}}/actuator/env
+
+###

@@ -1,0 +1,7 @@
+spring:
+  config:
+    activate:
+      on-cloud-platform: "kubernetes"
+    import:
+      - "optional:configtree:/etc/app/config/"
+      - "optional:configtree:/etc/app/secrets/"
